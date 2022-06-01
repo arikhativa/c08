@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:37:00 by yrabby            #+#    #+#             */
-/*   Updated: 2022/06/01 13:16:27 by yoav             ###   ########.fr       */
+/*   Updated: 2022/06/01 14:07:22 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_putnbr(int nb)
 
 void	ft_show_tab(struct s_stock_str *par)
 {
-	while (*par)
+	while (par->str != NULL)
 	{
 		ft_putstr(par->str);
 		ft_putchar('\n');
