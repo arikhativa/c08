@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:54:47 by yrabby            #+#    #+#             */
-/*   Updated: 2022/05/31 16:53:08 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/06/01 13:41:59 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	int					i;
 	int					stt;
 
-	ret = (struct s_stock_str *)malloc(sizeof(struct s_stock_str *) * (ac + 1));
+	ret = (struct s_stock_str *)malloc(sizeof(struct s_stock_str) * (ac + 1));
 	if (!ret)
 		return (NULL);
 	i = 0;
 	while (i < ac)
 	{
-		stt = create_struct(&(ret[i]), av[i]);
+		stt = create_struct(ret + i, av[i]);
 		if (stt == ERROR)
 		{
 			free_all(ret, i);
@@ -79,8 +79,8 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 		}
 		++i;
 	}
-	ret->size = 0;
-	ret->str = NULL;
-	ret->copy = NULL;
+	(ret + i)->size = 0;
+	(ret + i)->str = NULL;
+	(ret + i)->copy = NULL;
 	return (ret);
 }
